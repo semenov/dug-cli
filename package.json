@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/semenov/dug-cli#readme",
   "dependencies": {
-    "commander": "^2.9.0"
+    "commander": "^2.9.0",
+    "request": "^2.67.0",
+    "tar": "^2.2.1",
+    "unzip": "^0.1.11"
   }
 }
