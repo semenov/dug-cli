@@ -3,6 +3,7 @@
 var request = require('request');
 var tar = require('tar');
 var zlib = require('zlib');
+var path = require('path');
 var child_process = require('child_process');
 
 var cwd = process.cwd();
@@ -18,7 +19,6 @@ program
         var templateUrl = 'https://github.com/semenov/drug-template/archive/v0.0.1.tar.gz';
         var outputDir = cwd;
 
-
         console.log('Downloading project template');
 
         request(templateUrl)
@@ -29,13 +29,10 @@ program
 program
     .command('start')
     .action(function() {
-        console.log('start');
-        var child = child_process.exec('npm run dev', function(err) {
-            console.log('Done');
-        });
-
-        child.stdout.pipe(process.stdout);
-        child.stderr.pipe(process.stderr);
+        console.log('Running start command');
+        var taskPath = path.join(cwd, 'tasks/watch');
+        var watch = require(taskPath);
+        watch();
     });
 
 
